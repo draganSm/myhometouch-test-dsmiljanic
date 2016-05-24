@@ -1,0 +1,55 @@
+/**
+ *  If you want to override some foundation settings, you have to change values here.
+ *  The list of settings values are listed here bower_components/foundation/scss/foundation/_settings.scss
+ */
+$topbar-background: #5AADBB;
+
+$gray-1: #ccc;
+
+/**
+ *  The import of foundation is made manually because there is still no links of the
+ *  sass version in their bower.json...
+ */
+@import '../../bower_components/foundation-sites/scss/foundation';
+@include foundation-everything;
+
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+$decoration-length: 130px;
+.main-form {
+  h1 {
+    text-align: center;
+    position: relative;
+    margin-bottom: 1.5em;
+    padding-bottom: 0.5em;
+    &:after {
+      display: inline-block;
+      position: absolute;
+      // interpolation demo
+      left: calc(50% - (#{$decoration-length}/2));
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      content: ' ';
+
+      // demonstrate each loop: just for demo purpose - it's overkill here
+      @each $side in 'left', 'right' {
+        border-#{$side}: ($decoration-length/2) solid $gray-1;
+      }
+    }
+  }
+}
+
+
+
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
